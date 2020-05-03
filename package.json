@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/NataliShip/webpack-4-boilerplate/issues"
   },
-  "homepage": "https://github.com/NataliShip/webpack-4-boilerplate#readme"
+  "homepage": "https://github.com/NataliShip/webpack-4-boilerplate#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
 }
