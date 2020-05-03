@@ -1,0 +1,22 @@
+{
+  "name": "webpack-4-boilerplate",
+  "version": "1.0.0",
+  "description": "webpack boilerplate",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NataliShip/webpack-4-boilerplate.git"
+  },
+  "keywords": [
+    "js, javascript, webpack"
+  ],
+  "author": "Nataliya Shipelova <natulechka_m.25@mail.ru>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NataliShip/webpack-4-boilerplate/issues"
+  },
+  "homepage": "https://github.com/NataliShip/webpack-4-boilerplate#readme"
+}
