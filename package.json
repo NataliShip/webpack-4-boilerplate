@@ -21,7 +21,8 @@
   "homepage": "https://github.com/NataliShip/webpack-4-boilerplate#readme",
   "devDependencies": {
     "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^3.3.11",
+    "jest": "^25.5.4"
   },
   "dependencies": {
     "prop-types": "^15.7.2",
