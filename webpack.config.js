@@ -17,11 +17,12 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
 
   resolve: {
-    extensions: ['js', 'jsx', 'css', 'sass'],
+    extensions: ['.js', '.jsx', '.css', '.sass'],
     alias: {
       'react-dom': '@hot-loader/react-dom',
-      components: path.resolve(__dirname, 'src', 'components'),
-      assets: path.resolve(__dirname, 'src', 'assets'),
+      components: path.resolve(__dirname, 'src/components'),
+      assets: path.resolve(__dirname, 'src/assets'),
+      styles: path.resolve(__dirname, 'src/styles'),
     }
   },
 
