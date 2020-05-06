@@ -14,6 +14,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
 
+  context: path.resolve(__dirname, 'src'),
+
   resolve: {
     extensions: ['js', 'jsx', 'css', 'sass'],
     alias: {
@@ -29,7 +31,9 @@ module.exports = {
     }
   },
 
-  context: path.resolve(__dirname, 'src'),
+  devServer: {
+    port: 4000
+  },
 
   plugins: [
     new HTMLWebpackPlugin({
