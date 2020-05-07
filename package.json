@@ -4,10 +4,10 @@
   "description": "webpack boilerplate",
   "private": true,
   "scripts": {
-    "start": "rm -rf dist/* && webpack-dev-server --mode development --open",
-    "dev": "rm -rf dist/* && webpack --mode development",
-    "build": "rm -rf dist/* && webpack --mode production",
-    "watch": "webpack --mode development --watch",
+    "start": "cross-env NODE_ENV=development webpack-dev-server --mode development --open",
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
     "test": "jest",
     "fix": "eslint --fix ./src --ext .jsx"
   },
@@ -28,6 +28,7 @@
     "@hot-loader/react-dom": "^16.13.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
