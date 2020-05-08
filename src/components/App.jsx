@@ -5,8 +5,8 @@ import logo from 'assets/logo.png'
 const App = ({name}) => {
   return (
     <div>
-      { `Приложение ${name} запущено!` }
-      <img src={logo} alt='Test logo'/>
+      {`Приложение ${name} запущено!`}
+      <img src={logo} alt='Test logo' />
     </div>
   )
 }

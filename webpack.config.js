@@ -46,6 +46,19 @@ const babelOptions = (preset) => {
   return opts
 }
 
+const jsLoaders = (preset) => {
+  const loaders = [
+    {
+      loader: 'babel-loader',
+      options: babelOptions(preset)
+    }
+  ]
+
+  if (isDev) loaders.push('eslint-loader')
+
+  return loaders
+}
+
 const loaders = {
   miniCssExtract: {
     loader: MiniCssExtractPlugin.loader,
@@ -188,18 +201,12 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babelOptions()
-        }
+        use: jsLoaders()
       },
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        loader: {
-          loader: 'babel-loader',
-          options: babelOptions('@babel/preset-typescript')
-        }
+        use: jsLoaders('@babel/preset-typescript')
       }
     ]
   }
