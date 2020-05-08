@@ -61,7 +61,7 @@ module.exports = {
   mode: 'development',
 
   entry: {
-    main: './index.js'
+    main: ['@babel/polyfill', './index.js']
   },
 
   output: {
@@ -87,6 +87,9 @@ module.exports = {
     port: 4000,
     hot: isDev
   },
+
+  // fix warning in Chrome Dev Tools
+  devtool: 'inline-source-map',
 
   plugins: [
     new HTMLWebpackPlugin({
@@ -164,6 +167,24 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              "@babel/preset-env",
+              '@babel/preset-react'
+            ],
+            plugins: [
+              "@babel/plugin-syntax-dynamic-import",
+              "@babel/plugin-proposal-class-properties",
+              "@babel/plugin-proposal-optional-chaining"
+            ],
+          }
+        }
       }
     ]
   }
