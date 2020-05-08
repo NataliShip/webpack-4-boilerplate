@@ -105,9 +105,8 @@ module.exports = {
     port: 4000,
     hot: isDev
   },
-
-  // fix warning in Chrome Dev Tools
-  devtool: 'inline-source-map',
+  
+  devtool: isDev ? 'source-map' : '',
 
   plugins: [
     new HTMLWebpackPlugin({
