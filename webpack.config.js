@@ -26,7 +26,28 @@ const optimization = () => {
   return config
 }
 
-const filename = (ext) => isDev ? `[name].${ext}` : `[name].[hash].${ext}`
+const filename = (ext) => isDev ? `[name].${ext}` : `[name].[hash:6].${ext}`
+
+const loaders = {
+  miniCssExtract: {
+    loader: MiniCssExtractPlugin.loader,
+    options: {
+      hmr: isDev,
+      reloadAll: true
+    }
+  },
+  css: 'css-loader',
+  less: 'less-loader',
+  sass: 'sass-loader',
+  cssModules: {
+    loader: 'css-loader',
+    options: {
+      modules: {
+        localIdentName: '[name]__[local]--[hash:base64:5]'
+      }
+    }
+  }
+}
 
 module.exports = {
   mode: 'development',
@@ -83,51 +104,55 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDev,
-              reloadAll: true
-            }
-          },
-          'css-loader'
+          loaders.miniCssExtract,
+          loaders.css
         ]
       },
       {
         test: /\.less$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDev,
-              reloadAll: true
-            }
-          },
-          'css-loader',
-          'less-loader'
+          loaders.miniCssExtract,
+          loaders.css,
+          loaders.less
         ]
       },
       {
         test: /\.s[ac]ss$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: isDev,
-              reloadAll: true
-            }
-          },
-          'css-loader',
-          'sass-loader'
+          loaders.miniCssExtract,
+          loaders.css,
+          loaders.sass
+        ]
+      },
+      {
+        test: /\.module.sass$/,
+        use: [
+          loaders.miniCssExtract,
+          loaders.cssModules,
+          loaders.sass
         ]
       },
       {
         test: /\.(jpe?g|svg|png|gif)$/,
-        use: ['file-loader']
+        use: [
+            {
+              loader: 'file-loader',
+              options: {
+                name: 'images/[name].[hash:6].[ext]'
+              }
+            }
+          ]
       },
       {
         test: /\.(ttf|woff|woff2|eot|otf)$/,
-        use: ['file-loader']
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'fonts/[name].[hash:6].[ext]'
+            }
+          }
+        ]
       }
     ]
   }
