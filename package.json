@@ -9,7 +9,8 @@
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
     "test": "jest",
-    "fix": "eslint --fix ./src --ext .jsx"
+    "fix": "eslint --fix ./src --ext .jsx",
+    "stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json"
   },
   "browserslist": "> 0.25%, not dead",
   "repository": {
