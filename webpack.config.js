@@ -39,6 +39,14 @@ const loaders = {
   css: 'css-loader',
   less: 'less-loader',
   sass: 'sass-loader',
+  postcss: {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: true,
+      plugins: () =>
+        [require('autoprefixer')]
+    }
+  },
   cssModules: {
     loader: 'css-loader',
     options: {
@@ -113,6 +121,7 @@ module.exports = {
         use: [
           loaders.miniCssExtract,
           loaders.css,
+          loaders.postcss,
           loaders.less
         ]
       },
@@ -121,6 +130,7 @@ module.exports = {
         use: [
           loaders.miniCssExtract,
           loaders.css,
+          loaders.postcss,
           loaders.sass
         ]
       },
@@ -129,6 +139,7 @@ module.exports = {
         use: [
           loaders.miniCssExtract,
           loaders.cssModules,
+          loaders.postcss,
           loaders.sass
         ]
       },
