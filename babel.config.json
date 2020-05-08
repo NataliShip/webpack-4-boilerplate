@@ -1,0 +1,30 @@
+{
+  "presets": [
+    "@babel/preset-react",
+    "@babel/preset-typescript",
+    [
+      "@babel/preset-env", {
+      "targets": "> 0.25%, not dead",
+      "modules": false
+    }]
+  ],
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-optional-chaining"
+  ],
+  "env": {
+    "test": {
+      "presets": [
+        ["@babel/preset-env", {"targets": {
+          "node": "current"
+        }}]
+      ],
+      "plugins": [
+        "@babel/plugin-syntax-dynamic-import",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-proposal-optional-chaining"
+      ]
+    }
+  }
+}

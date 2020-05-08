@@ -28,6 +28,24 @@ const optimization = () => {
 
 const filename = (ext) => isDev ? `[name].${ext}` : `[name].[hash:6].${ext}`
 
+const babelOptions = (preset) => {
+  const opts = {
+    presets: [
+      '@babel/preset-env',
+      '@babel/preset-react'
+    ],
+    plugins: [
+      '@babel/plugin-syntax-dynamic-import',
+      '@babel/plugin-proposal-class-properties',
+      '@babel/plugin-proposal-optional-chaining'
+    ]
+  }
+
+  if (preset) opts.presets.push(preset)
+
+  return opts
+}
+
 const loaders = {
   miniCssExtract: {
     loader: MiniCssExtractPlugin.loader,
@@ -173,17 +191,15 @@ module.exports = {
         exclude: /node_modules/,
         loader: {
           loader: 'babel-loader',
-          options: {
-            presets: [
-              "@babel/preset-env",
-              '@babel/preset-react'
-            ],
-            plugins: [
-              "@babel/plugin-syntax-dynamic-import",
-              "@babel/plugin-proposal-class-properties",
-              "@babel/plugin-proposal-optional-chaining"
-            ],
-          }
+          options: babelOptions()
+        }
+      },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        loader: {
+          loader: 'babel-loader',
+          options: babelOptions('@babel/preset-typescript')
         }
       }
     ]
