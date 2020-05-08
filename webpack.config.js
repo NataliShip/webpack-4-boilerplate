@@ -94,6 +94,34 @@ module.exports = {
         ]
       },
       {
+        test: /\.less$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isDev,
+              reloadAll: true
+            }
+          },
+          'css-loader',
+          'less-loader'
+        ]
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: isDev,
+              reloadAll: true
+            }
+          },
+          'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
         test: /\.(jpe?g|svg|png|gif)$/,
         use: ['file-loader']
       },
