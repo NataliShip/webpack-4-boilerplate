@@ -4,7 +4,7 @@ import logo from 'assets/logo.png'
 
 const App = ({name}) => {
   return (
-    <div>
+    <div className='app'>
       {`Приложение ${name} запущено!`}
       <img src={logo} alt='Test logo' />
     </div>

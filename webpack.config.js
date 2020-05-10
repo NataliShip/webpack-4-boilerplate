@@ -186,7 +186,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(jpe?g|svg|png|gif)$/,
+        test: /\.(jpe?g|png|gif)$/,
         use: [
             {
               loader: 'file-loader',
@@ -195,6 +195,26 @@ module.exports = {
               }
             }
           ]
+      },
+      {
+        test: /\.svg$/,
+        oneOf: [
+          {
+            resourceQuery: /inline/,
+            use: 'raw-loader'
+          },
+          {
+            use: [
+              {
+                loader: 'file-loader',
+                options: {
+                  name: 'images/[name]_[hash:6].[ext]',
+                  esModule: false
+                }
+              }
+            ]
+          }
+        ]
       },
       {
         test: /\.(ttf|woff|woff2|eot|otf)$/,

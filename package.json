@@ -9,6 +9,7 @@
     "build": "cross-env NODE_ENV=production webpack --mode production",
     "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
     "test": "jest",
+    "test:watch": "jest --watchAll",
     "fix": "eslint --fix ./src --ext .jsx",
     "stats": "webpack --json > stats.json && webpack-bundle-analyzer stats.json"
   },
@@ -26,6 +27,24 @@
     "url": "https://github.com/NataliShip/webpack-4-boilerplate/issues"
   },
   "homepage": "https://github.com/NataliShip/webpack-4-boilerplate#readme",
+  "jest": {
+    "setupFiles": [
+      "<rootDir>src/setupTests.js"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|svg\\?inline|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/src/__mocks__/fileMock.js",
+      "\\.(css|less|sass)$": "identity-obj-proxy",
+      "^components(.*)$": "<rootDir>/src/components$1",
+      "^assets(.*)$": "<rootDir>/src/assets$1",
+      "^styles(.*)$": "<rootDir>/src/styles$1"
+    },
+    "notify": true,
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
+    "verbose": true
+  },
   "devDependencies": {
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -37,18 +56,25 @@
     "@hot-loader/react-dom": "^16.13.0",
     "autoprefixer": "^9.7.6",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.0.1",
     "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-loader": "^4.0.2",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-jest": "^23.10.0",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.0.0",
+    "faker": "^4.1.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^25.5.4",
     "less": "^3.11.1",
     "less-loader": "^6.1.0",

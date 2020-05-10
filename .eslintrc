@@ -5,7 +5,12 @@
     "plugin:react-hooks/recommended"
   ],
   "parser": "babel-eslint",
+  "plugins": [
+    "jest",
+    "babel"
+  ],
   "env": {
+    "jest": true,
     "es6": true,
     "browser": true
   },
