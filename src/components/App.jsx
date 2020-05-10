@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import logo from 'assets/logo.png'
+import css from './app.module.sass'
 
 const App = ({name}) => {
   return (
-    <div className='app'>
+    <div className={css.root}>
       {`Приложение ${name} запущено!`}
-      <img src={logo} alt='Test logo' />
+      <img className={css.img} src={logo} alt='Test logo' />
     </div>
   )
 }

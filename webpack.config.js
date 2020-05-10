@@ -168,7 +168,8 @@ module.exports = {
         ]
       },
       {
-        test: /\.s[ac]ss$/,
+        // for not module sass files
+        test: /^((?!\.module).)*s[ac]ss$/,
         use: [
           loaders.miniCssExtract,
           loaders.css,
@@ -177,6 +178,7 @@ module.exports = {
         ]
       },
       {
+        // for sass modules
         test: /\.module.sass$/,
         use: [
           loaders.miniCssExtract,
